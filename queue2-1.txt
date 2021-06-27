@@ -1,0 +1,14 @@
+const solution = (progresses, speeds)=> {
+    let days = progresses.map((progress, index) => Math.ceil((100 - progress) / speeds[index]))
+    let stand = days[0]
+    let answer = [1]
+    for(let i = 1; i < days.length; i++){
+        if(days[i]> stand){
+            stand = days[i]
+            answer.push(1)
+        }else{
+            answer[answer.length-1]++
+        }
+    }
+    return answer
+}
