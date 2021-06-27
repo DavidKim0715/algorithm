@@ -1,0 +1,20 @@
+const solution = (bridge_length, weight, truck_weights)=>{
+    let answer = bridge_length, limit = 0
+    let wait = truck_weights.slice()
+    let queue = []
+    while(wait.length !== 0){
+        if(queue.length < bridge_length){
+           if(limit + wait[0] <= weight){
+               let cur = wait.shift()
+               limit += cur
+               queue.push(cur)
+            }else{
+                queue.push(0)
+            }
+            answer++
+        }else{
+            limit -=queue.shift()
+        }
+    }
+    return answer
+}
